@@ -1,0 +1,72 @@
+## Join [/auth/join]
+사용자 가입을 처리합니다.
+
+### 사용자 모델
+
+```js
+{
+    "_id": String, // 오브젝트 ID
+    "type": String, // 사용자 타입
+    "name": String, // 이름
+    "email": String, // 고유한 이메일
+    "password": String, // 해싱된 패스워드
+    "photo": String, // 프로필 사진
+    "timestamp": Date.now(), // 타임스탬프
+    "student": {}, // 디미고 학생 정보
+    "inu": Boolean, // INU 동아리원 여부
+    "admin": Boolean, // 관리자 여부
+}
+```
+
+### 사용자 타입
+
+```js
+{
+    "user": "일반 사용자",
+    "dimigo": "디미고 학생",
+    "inu": "INU 동아리원",
+}
+```
+
+### 디미고 학생 정보 모델
+
+```js
+{
+    "grade": Number,
+    "klass": Number,
+    "number": Number,
+    "serial": String,
+}
+```
+
+- 디미고 API에서 학생 정보를 받아 저장
+- 이때 따로 프로필 사진이 전달되지 않았을 경우, 디미고 API 상의 프로필 사진(`photofile2`, `photofile1` 순)으로 업데이트
+
+### 일반 사용자 가입 [POST]
+### 디미고 학생 가입 [POST]
+
+## Assign [/auth/assign]
+기존 사용자의 권한을 상향합니다. 현재 사용자가 관리자 권한일 때만 이용할 수 있습니다.
+
+### 페이로드 모델
+
+```js
+{
+    "id": String, // 권한을 부여할 사용자의 오브젝트 ID
+    "type": String, // 부여할 권한
+}
+```
+
+### 권한 타입
+
+```js
+{
+    "admin": "관리자", // INU 동아리원인 사용자에게만 부여 가능
+    "inu": "INU 동아리원", // 디미고 학생 타입인 사용자에게만 부여 가능
+}
+```
+
+### INU 동아리원 권한 부여 [POST]
+### INU 동아리원 권한 삭제 [DELETE]
+### 관리자 권한 부여 [POST]
+### 관리자 권한 삭제 [DELETE]

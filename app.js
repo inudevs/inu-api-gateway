@@ -19,7 +19,7 @@ app.use('/', router);
 
 expressAglio(app, {
 	source: __dirname + '/docs/source/index.apib',
-  output: __dirname + '/docs/html/index.html',
+  output: __dirname + '/docs/dist/index.html',
   uri: '/',
   aglioOptions: {
     theme: 'cyborg',

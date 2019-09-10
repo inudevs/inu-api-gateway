@@ -24,7 +24,6 @@
 {
     "user": "일반 사용자",
     "dimigo": "디미고 학생",
-    "inu": "INU 동아리원",
 }
 ```
 
@@ -43,7 +42,47 @@
 - 이때 따로 프로필 사진이 전달되지 않았을 경우, 디미고 API 상의 프로필 사진(`photofile2`, `photofile1` 순)으로 업데이트
 
 ### 일반 사용자 가입 [POST]
+
++ Request
+    
+    + Body
+
+            {
+                "type": "user",
+                "name": String,
+                "email": String,
+                "password": String,
+                "photo": String, // nullable
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": String, // 생성된 사용자의 오브젝트 ID
+            }
+
 ### 디미고 학생 가입 [POST]
+
++ Request
+    
+    + Body
+
+            {
+                "type": "dimigo",
+                "email": String,
+                "password": String,
+                "photo": String, // nullable
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": String, // 생성된 사용자의 오브젝트 ID
+            }
 
 ## Assign [/auth/assign]
 기존 사용자의 권한을 상향합니다. 현재 사용자가 관리자 권한일 때만 이용할 수 있습니다.

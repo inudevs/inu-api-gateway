@@ -1,11 +1,10 @@
-const createError = require('http-errors');
-const express = require('express');
-const expressAglio = require('express-aglio');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-
-const router = require('./router');
+import createError from 'http-errors';
+import express from 'express';
+import expressAglio from 'express-aglio';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import router from './router';
 
 const app = express();
 
@@ -14,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'pug');
 
 app.use('/', router);
 

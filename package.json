@@ -3,16 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon --exec babel-node index.js"
   },
   "dependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-aglio": "^1.0.2",
     "express-async-handler": "^1.1.4",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }

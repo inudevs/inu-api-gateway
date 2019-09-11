@@ -75,6 +75,7 @@ User.statics.createDimigo = async function (user) {
     password: `${encryptedPassword}|${salt}`,
     photo,
     student: {
+      id,
       grade,
       klass,
       number,
@@ -97,6 +98,7 @@ User.methods.migrateDimigo = async function(id, password) {
   const identity = await requestDimigo(id, password);
   const { name, grade, klass, number, serial, email, photo } = identity;
   this.student = {
+    id,
     grade,
     klass,
     number,

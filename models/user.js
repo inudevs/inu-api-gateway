@@ -1,5 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { pbkdf2Sync, randomBytes } from 'crypto';
+import * as jwt from 'jsonwebtoken';
+import request from 'request-promise-native';
 
 const User = new Schema({
   type: String,
@@ -24,6 +26,7 @@ const encryptPassword = (password, salt) => {
   return encrypted;
 }
 
+// 일반 사용자 생성
 User.statics.createUser = async function(user) {
   const { type, name, email, photo } = user;
   const salt = randomBytes(10).toString('base64');
@@ -39,17 +42,41 @@ User.statics.createUser = async function(user) {
   return savedUser.id;
 }
 
+// 패스워드 확인
 User.methods.verifyPassword = function(userInput) {
   const [encrypted, salt] = user.password.split('|');
   const password = encryptPassword(userInput, salt);
   return (password === encrypted);
 }
 
+// 기존 사용자에 디미고 계정 연동
+User.methods.migrateDimigo = async function(id, password) {
+  const { token } = await request({
+    uri: 'https://api.dimigo.in/auth',
+    method: 'POST',
+    body: { id, password, },
+    json: true,
+  });
+  const identity = jwt.decode(token).identity[0];
+  const { name, grade, klass, number, serial, photo } = identity;
+  this.student = {
+    grade,
+    klass,
+    number,
+    serial,
+  };
+  this.name = this.name | name;
+  this.photo = this.photo | photo;
+  return this.save()
+}
+
+// 기존 사용자에 INU 동아리원 권한 부여
 User.methods.assignInu = function() {
   this.inu = true;
   return this.save();
 }
 
+// 기존 사용자에 관리자 권한 부여
 User.methods.assignAdmin = function() {
   this.admin = true;
   return this.save();

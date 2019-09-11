@@ -10,17 +10,17 @@ const sign = (data) => {
 const verify = (token) => new Promise(
   (resolve, reject) => {
     jwt.verify(token, secret, (err, decoded) => {
-      if (err) reject(err)
-      resolve(decoded)
-    })
+      if (err) reject(err);
+      resolve(decoded);
+    });
   }
 );
 
 const authMiddleware = (req, res, next) => {
-  const token = req.headers['Authorization'] || req.query.token
+  const token = req.headers['Authorization'] || req.query.token;
   if (!token) {
     return res.status(401).json({
-      message: 'Unauthorized; No token found'
+      message: 'Unauthorized; No token found',
     });
   }
 
@@ -31,7 +31,7 @@ const authMiddleware = (req, res, next) => {
     });
   } catch (error) {
     return res.status(401).json({
-      message: error.message
+      message: error.message,
     });
   }
 }

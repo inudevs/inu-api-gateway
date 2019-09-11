@@ -87,7 +87,7 @@ User.statics.createDimigo = async function (user) {
 
 // 패스워드 확인
 User.methods.verifyPassword = function(userInput) {
-  const [encrypted, salt] = user.password.split('|');
+  const [encrypted, salt] = this.password.split('|');
   const password = encryptPassword(userInput, salt);
   return (password === encrypted);
 }

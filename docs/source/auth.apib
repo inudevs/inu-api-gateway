@@ -87,6 +87,31 @@
                 "id": String, // 생성된 사용자의 오브젝트 ID
             }
 
+## 로그인 [/auth/login]
+사용자 이메일과 패스워드로 액세스 토큰을 발급합니다.
+
+### 사용자 로그인 [POST]
+
++ Request
+    
+    + Body
+
+            {
+                "email": String,
+                "password": String,
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "token": String,
+            }
+
+### 디미고 계정으로 로그인[POST]
+- 디미고 계정으로 간편 로그인 및 가입
+
 ## 계정 연결 [/auth/migrate]
 일반 사용자 계정을 디미고 계정과 연결해, 학생 정보를 가져옵니다.
 

@@ -4,7 +4,6 @@ import expressAglio from 'express-aglio';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import mongoose from 'mongoose';
 import router from './router';
 
 const app = express();
@@ -39,17 +38,5 @@ app.use(function(err, req, res, next) {
     message: err.message,
   });
 });
-
-// mongodb 연결
-mongoose.connect(
-  'mongodb://localhost:27017/test',
-  { useNewUrlParser: true },
-  (err) => {
-    if (err) {
-      throw err;
-    }
-    console.log('Conncected to mongodb');
-  },
-);
 
 module.exports = app;

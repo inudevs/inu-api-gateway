@@ -74,9 +74,8 @@
             {
                 "user": {
                     "type": "dimigo",
-                    "email": String,
-                    "password": String,
-                    "photo": String, // nullable
+                    "id": String, // 디미고 계정 아이디
+                    "password": String, // 디미고 계정 패스워드
                 }
             }
 
@@ -87,6 +86,20 @@
             {
                 "id": String, // 생성된 사용자의 오브젝트 ID
             }
+
+## Migrate [/auth/migrate]
+일반 사용자 계정을 디미고 계정과 연동합니다.
+
+### 페이로드 모델
+
+```js
+{
+    "id": String, // 디미고 계정 아이디
+    "password": String, // 디미고 계정 패스워드
+}
+```
+
+### 디미고 계정 연동 [POST]
 
 ## Assign [/auth/assign]
 기존 사용자의 권한을 상향합니다. 현재 사용자가 관리자 권한일 때만 이용할 수 있습니다.

@@ -21,18 +21,18 @@ const authMiddleware = (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       message: 'Unauthorized; No token found'
-    })
+    });
   }
 
   try {
-    const { decoded } = await verify(token);
-    req.decoded = decoded;
-    next()
+    verify(token).then(decoded => {
+      req.decoded = decoded;
+      return next();
+    });
   } catch (error) {
-    res.status(401).json({
-      success: false,
+    return res.status(401).json({
       message: error.message
-    })
+    });
   }
 }
 

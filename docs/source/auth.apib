@@ -48,11 +48,13 @@
     + Body
 
             {
-                "type": "user",
-                "name": String,
-                "email": String,
-                "password": String,
-                "photo": String, // nullable
+                "user": {
+                    "type": "user",
+                    "name": String,
+                    "email": String,
+                    "password": String,
+                    "photo": String, // nullable
+                }
             }
 
 + Response 200 (application/json)
@@ -70,10 +72,12 @@
     + Body
 
             {
-                "type": "dimigo",
-                "email": String,
-                "password": String,
-                "photo": String, // nullable
+                "user": {
+                    "type": "dimigo",
+                    "email": String,
+                    "password": String,
+                    "photo": String, // nullable
+                }
             }
 
 + Response 200 (application/json)

@@ -34,6 +34,17 @@
 
 ## Service Keys [/service/{serviceID}/key]
 
+### 서비스 키 모델
+
+```js
+{
+    "id": String,
+    "service": String, // serviceID
+    "latest": Date.now(), // latest used
+    "timestamp": Date.now(), // created
+}
+```
+
 + Parameters
     + serviceID: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 ID
 
@@ -49,7 +60,7 @@
 + Parameters
     + key: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 키
 
-### 서비스 키 삭제 [GET]
+### 서비스 키 정보 [GET]
 주어진 서비스 키 `key`의 정보를 가져옵니다.
 
 ### 서비스 키 삭제 [DELETE]

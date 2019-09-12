@@ -1,0 +1,56 @@
+## Services [/service]
+서비스를 등록하고, 키를 발급해 공용 API의 리소스를 사용하거나 서비스 API의 프록시를 생성할 수 있다.
+
+### 서비스 모델
+
+```js
+{
+    "id": String, // 오브젝트 ID
+    "name": String, // 서비스 이름(한글)
+    "route": String, // 서비스 프록시 시 주소 (영문)
+    "proxy": Boolean, // 서비스 API 프록시 사용 여부
+    "api": String, // 서비스 API 주소
+    "timestamp": Date.now(),
+}
+```
+
+### 서비스 목록 [GET]
+서버에 등록한 모든 서비스의 목록을 가져옵니다.
+
+### 서비스 등록 [POST]
+서버에 새로운 서비스를 등록합니다.
+
+## Service [/service/{serviceID}]
+특정 서비스에 대한 관리 수단을 제공하는 엔드포인트입니다.
+
++ Parameters
+    + serviceID: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 ID
+
+### 서비스 정보 [GET]
+주어진 `serviceID`의 서비스 정보를 가져옵니다.
+
+### 서비스 삭제 [DELETE]
+주어진 `serviceID`의 서비스를 삭제합니다.
+
+## Service Keys [/service/{serviceID}/key]
+
++ Parameters
+    + serviceID: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 ID
+
+### 서비스 키 목록 [GET]
+주어진 `serviceID`의 서비스의 모든 키 목록을 가져옵니다.
+
+### 서비스 키 추가 [POST]
+주어진 `serviceID`의 서비스의 새로운 키를 생성합니다.
+
+## Service Key [/service/key/{key}]
+특정 키에 대한 관리 수단을 제공하는 엔드포인트입니다.
+
++ Parameters
+    + key: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 키
+
+### 서비스 키 삭제 [GET]
+주어진 서비스 키 `key`의 정보를 가져옵니다.
+
+### 서비스 키 삭제 [DELETE]
+주어진 서비스 키 `key`를 삭제합니다.

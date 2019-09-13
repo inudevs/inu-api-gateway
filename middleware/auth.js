@@ -17,7 +17,6 @@ const verify = (token) => new Promise(
 );
 
 const authMiddleware = (req, res, next) => {
-  console.log(req.headers)
   const token = req.headers['authorization'] || req.query.token;
   if (!token) {
     return res.status(401).json({

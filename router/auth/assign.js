@@ -2,21 +2,14 @@ import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 import User from '../../models/user';
 import { authMiddleware } from '../../middleware/auth';
+import { adminCheckMiddleware } from '../../middleware/privileges';
 
 const router = Router();
 
 // POST /auth/assign
 router.use('/', authMiddleware);
+router.use('/', adminCheckMiddleware);
 router.post('/', asyncHandler(async (req, res, _) => {
-  const identity = req.decoded;
-
-  // 관리자가 아님
-  if (!identity.admin) {
-    return res.status(403).json({
-      message: 'Forbidden; Not a admin user',
-    });
-  }
-
   const { id, type } = req.body;
   const user = await User.findById(id);
   

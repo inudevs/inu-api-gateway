@@ -1,8 +1,13 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 import Service from '../../models/service';
+import { authMiddleware } from '../../middleware/auth';
+import { inuCheckMiddleware } from '../../middleware/privileges';
 
 const router = Router();
+
+router.use('/', authMiddleware);
+router.use('/', inuCheckMiddleware);
 
 // GET /service
 router.get('/', asyncHandler(async (req, res, _) => {

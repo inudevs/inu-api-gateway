@@ -6,6 +6,15 @@ const ServiceKey = new Schema({
   timestamp: { type: Date, default: Date.now() },
 });
 
+ServiceKey.method('toJSON', function() {
+  var obj = this.toObject();
+  obj.id = obj._id;
+  ;['_id', '__v'].map(key => {
+    delete obj[key];
+  });
+  return obj;
+});
+
 ServiceKey.statics.create = async function(service) {
   const newServiceKey = new this({
     service: service.id,

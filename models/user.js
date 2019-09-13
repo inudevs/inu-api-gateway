@@ -15,6 +15,15 @@ const User = new Schema({
   admin: { type: Boolean, default: false },
 });
 
+User.method('toJSON', function() {
+  var obj = this.toObject();
+  obj.id = obj._id;
+  ;['_id', '__v'].map(key => {
+    delete obj[key];
+  });
+  return obj;
+});
+
 const encryptPassword = (password, salt) => {
   const encrypted = pbkdf2Sync(
     password,

@@ -3,11 +3,15 @@ import asyncHandler from 'express-async-handler';
 import Service from '../../models/service';
 import { authMiddleware } from '../../middleware/auth';
 import { inuCheckMiddleware } from '../../middleware/privileges';
+import key from './key.js';
 
 const router = Router();
 
-// router.use('/', authMiddleware);
-// router.use('/', inuCheckMiddleware);
+// register router for key
+router.use('/key', key);
+
+router.use('/', authMiddleware);
+router.use('/', inuCheckMiddleware);
 
 // GET /service
 router.get('/', asyncHandler(async (req, res, _) => {
@@ -51,7 +55,43 @@ router.post('/', asyncHandler(async (req, res, _) => {
 router.get('/:serviceID', asyncHandler(async (req, res, _) => {
   const { serviceID } = req.params;
   const service = await Service.findById(serviceID);
+
+  if (!service) {
+    return res.status(404).json({
+      message: 'No such service with given id',      
+    });
+  }
   return res.json(service);
+}));
+
+// GET /service/{serviceID}/key
+router.get('/:serviceID/key', asyncHandler(async (req, res, _) => {
+  const { serviceID } = req.params;
+  const service = await Service.findById(serviceID);
+  if (!service) {
+    return res.status(404).json({
+      message: 'No such service with given id',      
+    });
+  }
+
+  const serviceKeys = await service.getServiceKeys();
+  return res.json(serviceKeys);
+}));
+
+// POST /service/{serviceID}/key
+router.post('/:serviceID/key', asyncHandler(async (req, res, _) => {
+  const { serviceID } = req.params;
+  const service = await Service.findById(serviceID);
+  if (!service) {
+    return res.status(404).json({
+      message: 'No such service with given id',      
+    });
+  }
+
+  const key = await service.newServiceKey();
+  return res.json({
+    key,
+  });
 }));
 
 export default router;

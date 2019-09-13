@@ -32,7 +32,7 @@ Service.statics.create = async function(service) {
 
 Service.methods.newServiceKey = async function() {
   const newKey = await ServiceKey.create(this);
-  return newKey.id;
+  return newKey;
 }
 
 Service.methods.getServiceKeys = async function() {

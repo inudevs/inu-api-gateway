@@ -28,6 +28,10 @@ const authMiddleware = (req, res, next) => {
     verify(token).then(decoded => {
       req.decoded = decoded;
       return next();
+    }).catch(error => {
+      return res.status(401).json({
+        message: error.message,
+      }); 
     });
   } catch (error) {
     return res.status(401).json({

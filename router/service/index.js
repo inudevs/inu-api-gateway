@@ -7,11 +7,11 @@ import key from './key.js';
 
 const router = Router();
 
-// register router for key
-router.use('/key', key);
-
 router.use('/', authMiddleware);
 router.use('/', inuCheckMiddleware);
+
+// register router for key
+router.use('/key', key);
 
 // GET /service
 router.get('/', asyncHandler(async (req, res, _) => {

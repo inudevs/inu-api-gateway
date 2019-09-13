@@ -6,8 +6,8 @@ import { inuCheckMiddleware } from '../../middleware/privileges';
 
 const router = Router();
 
-router.use('/', authMiddleware);
-router.use('/', inuCheckMiddleware);
+// router.use('/', authMiddleware);
+// router.use('/', inuCheckMiddleware);
 
 // GET /service
 router.get('/', asyncHandler(async (req, res, _) => {
@@ -45,6 +45,13 @@ router.post('/', asyncHandler(async (req, res, _) => {
       message: err.message,
     });
   }
+}));
+
+// GET /service/{serviceID}
+router.get('/:serviceID', asyncHandler(async (req, res, _) => {
+  const { serviceID } = req.params;
+  const service = await Service.findById(serviceID);
+  return res.json(service);
 }));
 
 export default router;

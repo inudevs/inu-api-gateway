@@ -25,6 +25,7 @@ router.post('/', asyncHandler(async (req, res, _) => {
   }
 
   return res.json({
+    id: user.id,
     token: sign(user),
   });
 }));

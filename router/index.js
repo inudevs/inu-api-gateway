@@ -1,6 +1,7 @@
 import express from 'express';
 import auth from './auth';
 import service from './service';
+import user from './user';
 
 const router = express.Router();
 
@@ -13,5 +14,6 @@ router.get('/test', function(_, res) {
 
 router.use('/auth', auth);
 router.use('/service', service);
+router.use('/user', user);
 
 module.exports = router;

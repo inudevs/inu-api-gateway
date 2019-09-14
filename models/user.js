@@ -46,6 +46,8 @@ const requestDimigo = async (id, password) => {
   return identity;
 }
 
+const getPhotoUrl = photo => `${process.env.PHOTO_CDN}${photo}`
+
 // 일반 사용자 계정 생성
 User.statics.createUser = async function(user) {
   const { type, name, email, photo } = user;
@@ -82,7 +84,7 @@ User.statics.createDimigo = async function (user) {
     name,
     email,
     password: `${encryptedPassword}|${salt}`,
-    photo,
+    photo: getPhotoUrl(photo),
     student: {
       id,
       grade,
@@ -115,7 +117,7 @@ User.methods.migrateDimigo = async function(id, password) {
   };
   this.name = this.name || name;
   this.email = this.email || email;
-  this.photo = this.photo || photo;
+  this.photo = this.photo || getPhotoUrl(photo);
   return this.save()
 }
 

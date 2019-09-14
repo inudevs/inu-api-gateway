@@ -4,7 +4,7 @@ export const adminCheckMiddleware = (req, res, next) => {
   // 관리자가 아님
   if (!identity.admin) {
     return res.status(403).json({
-      message: 'Forbidden; Not an admin user',
+      message: '관리자 사용자가 아닙니다.',
     });
   }
 }
@@ -15,7 +15,7 @@ export const inuCheckMiddleware = (req, res, next) => {
   // INU 동아리원이 아님
   if (!identity.inu) {
     return res.status(403).json({
-      message: 'Forbidden; Not an INU member',
+      message: 'INU 동아리원이 아닙니다.',
     });
   }
 }

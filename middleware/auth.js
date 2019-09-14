@@ -20,7 +20,7 @@ const authMiddleware = (req, res, next) => {
   const token = req.headers['authorization'] || req.query.token;
   if (!token) {
     return res.status(401).json({
-      message: 'Unauthorized; No token found',
+      message: '액세스 토큰을 찾을 수 없습니다.',
     });
   }
 

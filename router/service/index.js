@@ -58,7 +58,7 @@ router.get('/:serviceID', asyncHandler(async (req, res, _) => {
 
   if (!service) {
     return res.status(404).json({
-      message: 'No such service with given id',      
+      message: '주어진 id를 가진 서비스가 없습니다.',
     });
   }
   return res.json(service);
@@ -70,7 +70,7 @@ router.get('/:serviceID/key', asyncHandler(async (req, res, _) => {
   const service = await Service.findById(serviceID);
   if (!service) {
     return res.status(404).json({
-      message: 'No such service with given id',      
+      message: '주어진 id를 가진 서비스가 없습니다.',  
     });
   }
 
@@ -84,7 +84,7 @@ router.post('/:serviceID/key', asyncHandler(async (req, res, _) => {
   const service = await Service.findById(serviceID);
   if (!service) {
     return res.status(404).json({
-      message: 'No such service with given id',      
+      message: '주어진 id를 가진 서비스가 없습니다.',  
     });
   }
 

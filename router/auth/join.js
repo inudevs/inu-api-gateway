@@ -13,7 +13,7 @@ router.post('/', asyncHandler(async (req, res, _) => {
     const dup = await User.findOne({ email: user.email })
     if (dup) {
       return res.status(400).json({
-        message: 'User with duplicate email already exists',
+        message: '이미 같은 이메일의 사용자가 존재합니다.',
       });
     }
 
@@ -58,7 +58,7 @@ router.post('/', asyncHandler(async (req, res, _) => {
     }
   } else {
     return res.status(400).json({
-      message: 'Invalid user type',
+      message: '잘못된 회원가입 방법입니다.',
     });
   }
 }));

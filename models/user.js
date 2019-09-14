@@ -71,7 +71,7 @@ User.statics.createDimigo = async function (user) {
   // 중복 체크
   const dup = await this.findOne({ email })
   if (dup) {
-    throw Error('User with duplicate email already exists');
+    throw Error('이미 같은 이메일의 사용자가 존재합니다.');
   }
 
   // 사용자 생성

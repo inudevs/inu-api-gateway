@@ -13,14 +13,14 @@ router.post('/', asyncHandler(async (req, res, _) => {
   // 해당 이메일의 사용자가 존재하지 않음
   if (!user) {
     return res.status(404).json({
-      message: 'No such user with given email',
+      message: '주어진 이메일을 가진 사용자가 없습니다.',
     });
   }
 
   // 잘못된 패스워드
   if (!user.verifyPassword(password)) {
     return res.status(401).json({
-      message: 'Wrong password',
+      message: '패스워드가 잘못되었습니다.',
     });
   }
 

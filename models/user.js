@@ -115,6 +115,7 @@ User.methods.migrateDimigo = async function(id, password) {
     number,
     serial,
   };
+  this.type = 'dimigo';
   this.name = this.name || name;
   this.email = this.email || email;
   this.photo = this.photo || getPhotoUrl(photo);

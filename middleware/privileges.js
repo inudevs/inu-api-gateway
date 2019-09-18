@@ -1,5 +1,5 @@
 export const adminCheckMiddleware = (req, res, next) => {
-  const identity = req.decoded;
+  const { identity } = req;
 
   // 관리자가 아님
   if (!identity.admin) {
@@ -10,7 +10,7 @@ export const adminCheckMiddleware = (req, res, next) => {
 }
 
 export const inuCheckMiddleware = (req, res, next) => {
-  const identity = req.decoded;
+  const { identity } = req;
 
   // INU 동아리원이 아님
   if (!identity.inu) {

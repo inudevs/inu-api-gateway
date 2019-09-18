@@ -26,7 +26,7 @@ const authMiddleware = (req, res, next) => {
 
   try {
     verify(token).then(decoded => {
-      req.decoded = decoded.data;
+      req.identity = decoded.data;
       return next();
     }).catch(error => {
       return res.status(401).json({

@@ -9,7 +9,7 @@ router.use('/', authMiddleware);
 
 // GET /user
 router.get('/', asyncHandler(async (req, res, _) => {
-  const user = req.decoded;
+  const user = req.identity;
   return res.json(user);
 }));
 

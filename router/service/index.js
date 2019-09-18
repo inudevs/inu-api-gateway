@@ -7,8 +7,8 @@ import key from './key.js';
 
 const router = Router();
 
-router.use('/', authMiddleware);
-router.use('/', inuCheckMiddleware);
+// router.use('/', authMiddleware);
+// router.use('/', inuCheckMiddleware);
 
 // register router for key
 router.use('/key', key);

@@ -1,4 +1,5 @@
 import { verify } from './auth';
+import Service from '../models/service';
 
 export const serviceMiddleware = async (req, res, next) => {
   // 서비스 API 키로 인증

@@ -1,8 +1,23 @@
 ## 학급 정보 [/api/default/student/class/{grade}/{klass}]
-서비스 키 또는 관리자 계정의 토큰이 필요합니다.
+서비스 API 키 또는 관리자 계정의 토큰이 필요합니다.
 
 ### 학급 정보 가져오기 [GET]
 
 + Parameters
     + grade: `1` (required) - 조회할 학급의 학년
     + klass: `1` (required) - 조회할 학급의 교실 번호(반)
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "name": "테스트",
+                    "serial": "1520",
+                    "grade": 1,
+                    "klass": 20,
+                    "username": "test",
+                    "idx": 9999
+                }
+            ]

@@ -4,7 +4,7 @@ import students from './students.json';
 
 const router = Router();
 
-// router.use('/', serviceMiddleware);
+router.use('/', serviceMiddleware);
 
 router.get('/class/:grade/:klass', (req, res, _) => {
   const grade = parseInt(req.params.grade);
@@ -15,8 +15,8 @@ router.get('/class/:grade/:klass', (req, res, _) => {
     student.class === klass &&
     student.username !== 'dimigofrontdev'
   ).map(student => 
-    (({ name, serial, grade, klass, user_id, username }) => 
-      ({ name, serial, grade, klass, username, idx: user_id }))(student)
+    (({ name, serial, grade, user_id, username }) => 
+      ({ name, serial, grade, klass: student.class, username, idx: user_id }))(student)
   ));
 });
 

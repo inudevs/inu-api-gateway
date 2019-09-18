@@ -15,7 +15,7 @@ export const serviceMiddleware = async (req, res, next) => {
   const token = req.headers['authorization'] || req.query.token;
   if (!token) {
     return req.status(401).json({
-      message: '서비스 키 또는 토큰을 찾을 수 없습니다.',
+      message: '서비스 API 키 또는 토큰을 찾을 수 없습니다.',
     });
   }
 

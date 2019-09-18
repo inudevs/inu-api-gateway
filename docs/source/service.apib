@@ -36,7 +36,7 @@
 
 ## Service Keys [/service/{serviceID}/key]
 
-### 서비스 키 모델
+### 서비스 API 키 모델
 
 ```js
 {
@@ -50,20 +50,20 @@
 + Parameters
     + serviceID: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 ID
 
-### 서비스 키 목록 [GET]
+### 서비스 API 키 목록 [GET]
 주어진 `serviceID`의 서비스의 모든 키 목록을 가져옵니다.
 
-### 서비스 키 추가 [POST]
+### 서비스 API 키 추가 [POST]
 주어진 `serviceID`의 서비스의 새로운 키를 생성합니다.
 
 ## Service Key [/service/key/{key}]
 특정 키에 대한 관리 수단을 제공하는 엔드포인트입니다.
 
 + Parameters
-    + key: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 키
+    + key: `5d79e66575a8030b5ec6c119` (required, string) - 서비스 API 키
 
-### 서비스 키 정보 [GET]
-주어진 서비스 키 `key`의 정보를 가져옵니다.
+### 서비스 API 키 정보 [GET]
+주어진 서비스 API 키 `key`의 정보를 가져옵니다.
 
-### 서비스 키 삭제 [DELETE]
-주어진 서비스 키 `key`를 삭제합니다.
+### 서비스 API 키 삭제 [DELETE]
+주어진 서비스 API 키 `key`를 삭제합니다.

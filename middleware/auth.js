@@ -42,5 +42,6 @@ const authMiddleware = (req, res, next) => {
 
 module.exports = {
   sign,
+  verify,
   authMiddleware,
 };

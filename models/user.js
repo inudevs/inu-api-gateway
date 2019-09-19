@@ -9,7 +9,7 @@ const User = new Schema({
   email: String,
   password: String,
   photo: String,
-  timestamp: { type: Date, default: Date.now() },
+  timestamp: { type: Date, default: Date.now },
   student: { type: Object, default: () => {} },
   inu: { type: Boolean, default: false },
   admin: { type: Boolean, default: false },

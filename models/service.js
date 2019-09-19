@@ -6,7 +6,7 @@ const Service = new Schema({
   route: String,
   proxy: { type: Boolean, default: false },
   api: String,
-  timestamp: { type: Date, default: Date.now() },
+  timestamp: { type: Date, default: Date.now },
 });
 
 Service.method('toJSON', function() {
@@ -15,6 +15,7 @@ Service.method('toJSON', function() {
   ;['_id', '__v'].map(key => {
     delete obj[key];
   });
+  obj.timestamp = obj.timestamp.getTime();
   return obj;
 });
 

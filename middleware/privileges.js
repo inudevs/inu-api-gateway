@@ -7,6 +7,7 @@ export const adminCheckMiddleware = (req, res, next) => {
       message: '관리자 사용자가 아닙니다.',
     });
   }
+  return next();
 }
 
 export const inuCheckMiddleware = (req, res, next) => {
@@ -18,4 +19,5 @@ export const inuCheckMiddleware = (req, res, next) => {
       message: 'INU 동아리원이 아닙니다.',
     });
   }
+  return next();
 }

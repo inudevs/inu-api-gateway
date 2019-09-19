@@ -2,8 +2,8 @@ import { Schema, model } from 'mongoose';
 
 const ServiceKey = new Schema({
   service: String,
-  latest: { type: Date, default: Date.now() },
-  timestamp: { type: Date, default: Date.now() },
+  latest: { type: Date, default: Date.now },
+  timestamp: { type: Date, default: Date.now },
 });
 
 ServiceKey.method('toJSON', function() {

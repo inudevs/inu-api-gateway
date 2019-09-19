@@ -18,7 +18,7 @@ const User = new Schema({
 User.method('toJSON', function() {
   var obj = this.toObject();
   obj.id = obj._id;
-  ;['_id', '__v'].map(key => {
+  ;['_id', '__v', 'password'].map(key => {
     delete obj[key];
   });
   return obj;

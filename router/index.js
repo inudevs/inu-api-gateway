@@ -2,6 +2,7 @@ import express from 'express';
 import auth from './auth';
 import service from './service';
 import user from './user';
+import log from './log';
 import api from './api';
 
 const router = express.Router();
@@ -16,6 +17,7 @@ router.get('/test', function(_, res) {
 router.use('/auth', auth);
 router.use('/service', service);
 router.use('/user', user);
+router.use('/log', log);
 router.use('/api', api);
 
 module.exports = router;

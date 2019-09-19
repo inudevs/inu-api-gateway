@@ -6,6 +6,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import router from './router';
+import { loggerMiddleware } from './middleware/logger';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug');
 
+app.use('/', loggerMiddleware);
 app.use('/', router);
 
 expressAglio(app, {

@@ -11,4 +11,11 @@ router.get('/:key', asyncHandler(async (req, res, _) => {
   return res.json(serviceKey);
 }));
 
+// DELETE /service/key/{key}
+router.delete('/:key', asyncHandler(async (req, res, _) => {
+  const { key } = req.params;
+  await ServiceKey.remove({ _id: key });
+  return res.json({});
+}));
+
 export default router;

@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler';
 import Log from '../models/log';
 
 export const loggerMiddleware = asyncHandler(async (req, res, next) => {
-  if (req.originalUrl === '/log')
+  if (!req.originalUrl.includes('/api'))
     return next();
   const startHrTime = process.hrtime();
 

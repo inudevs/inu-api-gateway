@@ -17,6 +17,7 @@
     "express": "~4.16.1",
     "express-aglio": "^1.0.2",
     "express-async-handler": "^1.1.4",
+    "express-http-proxy-async": "^1.0.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.9",

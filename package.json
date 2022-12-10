@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.1.0",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "express-aglio": "^1.0.2",
     "express-async-handler": "^1.1.4",
     "express-http-proxy-async": "^1.0.0",
